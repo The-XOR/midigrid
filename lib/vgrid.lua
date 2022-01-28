@@ -86,10 +86,11 @@ function Vgrid:_handle_grid_key(quad_id,qx,qy,state)
 end
 
 function Vgrid:find_quad(x,y)
-  local qid = 1
+  if (x < 1 or x > self.width or y < 1 or y > self.height) then return nil end
   
+  local qid = 1
   if self.locate_in_layout then qid = self.locate_in_layout(self,x,y) end
-  return self.quads[qid]
+  if qid then return self.quads[qid] else return nil end
 end
 
 function Vgrid:set(x,y,z)

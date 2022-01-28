@@ -11,6 +11,7 @@ launchpad.grid_notes= {
   {11,12,13,14,15,16,17,18}
 }
 
+launchpad.rotate_second_device = false
 launchpad.brightness_map = {
   0,
   11,
@@ -50,6 +51,10 @@ launchpad.aux.col = {
 }
 --left to right, 91 is aux key to column 1
 launchpad.aux.row = {
+  {'cc', 91, 0},
+  {'cc', 92, 0},
+  {'cc', 93, 0},
+  {'cc', 94, 0},
   {'cc', 104, 0},
   {'cc', 105, 0},
   {'cc', 106, 0},
@@ -59,5 +64,14 @@ launchpad.aux.row = {
   {'cc', 110, 0},
   {'cc', 111, 0}
 }
+
+function launchpad:create_quad_handers(quad_count)
+  -- Auto create Quad switching handlers attached to left and right arrow buttons
+  if quad_count > 1 then
+    for q = 1,quad_count do
+      self.aux.row_handlers[q] = function(self,val) self:change_quad(q) end
+    end
+  end
+end
 
 return launchpad
