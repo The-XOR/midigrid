@@ -12,24 +12,10 @@ launchpad.grid_notes= {
 }
 
 launchpad.rotate_second_device = false
-launchpad.brightness_map = {
-  0,
-  11,
-  100,
-  125,
-  83,
-  117,
-  14,
-  62,
-  99,
-  118,
-  126,
-  97,
-  109,
-  13,
-  12,
-  119
-}
+
+-- Nebbia                      i blues            i verdi           i rossi           i bianchi
+launchpad.brightness_map = {0, 45, 41, 37,   27, 22, 123, 122,   6, 106, 60, 120,   1, 2, 3, 119}
+
 
 launchpad.aux = {}
 

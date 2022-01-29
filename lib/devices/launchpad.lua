@@ -32,7 +32,7 @@ id  color
 --launchpad.brightness_map = {0, 16, 32, 48,   1, 17, 33, 49,   2, 18, 34, 50,   3, 19, 35, 51}
 
 -- Nebbia                      i blues            i verdi           i rossi           i bianchi
-launchpad.brightness_map = {47, 45, 41, 37,   27, 22, 123, 122,   6, 106, 60, 120,   1, 2, 3, 119}
+launchpad.brightness_map = {0, 45, 41, 37,   27, 22, 123, 122,   6, 106, 60, 120,   1, 2, 3, 119}
 
 -- Reset and set mode to XY
 launchpad.init_device_msg = { 0xB0, 0x00, 0x00, 0xB0, 0x00, 0x01 }
