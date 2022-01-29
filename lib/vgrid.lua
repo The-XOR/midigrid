@@ -29,7 +29,6 @@ function Vgrid:init(layout)
      
   elseif self.layout == '128' or '256' then
     self.locate_in_layout = function(self,x,y)
-      if (x > self.width or y > self.height) then return nil end
       if (y <= self.quads[1].height) then
         if (x <= self.quads[1].width) then return 1 else return 2 end
       end
@@ -85,20 +84,17 @@ function Vgrid:_handle_grid_key(quad_id,qx,qy,state)
   self.quads[quad_id]:key(qx,qy,state,self.key)
 end
 
-function Vgrid:find_quad(x,y)
-  if (x < 1 or x > self.width or y < 1 or y > self.height) then return nil end
-  
-  local qid = 1
-  if self.locate_in_layout then qid = self.locate_in_layout(self,x,y) end
-  if qid then return self.quads[qid] else return nil end
+function Vgrid:find_quad(x,y)  
+  local qid = self.locate_in_layout(self,x,y) 
+  return self.quads[qid]
 end
 
 function Vgrid:set(x,y,z)
-  local q = self:find_quad(x,y)
-  if q then
-    q:_relative_set(x,y,z)
-  else
+  if (x < 1 or x > self.width or y < 1 or y > self.height) then 
     print('Coords '..x..', '..y..' (x,y) outside Virtual Grid!')
+  else
+    local q = self:find_quad(x,y)
+    q:_relative_set(x,y,z)
   end
 end
 
