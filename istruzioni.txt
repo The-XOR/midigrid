@@ -1,27 +1,21 @@
-how to edit a script
-here’s a little tutorial on how to make scripts work with midigrid.
+ Modificare uno scipt per usarlo con midigrid:
+-----------------------------------------------
 
-1st step:
-generally, scripts with grid support will have a grid variable at the top. for example
+USO #1:
+    generally, scripts with grid support will have a grid variable at the top. for example
+    local g
+    or local grid
+    or local grid_device (i’ll use this in the examples below)
 
-local g
-or local grid
-or local grid_device (i’ll use this in the examples below)
+    replace it with:
+    local <var name> = util.file_exists(_path.code.."midigrid") and include "midigrid/lib/mg_128" or grid
 
-replace it with:
-local grid_device = util.file_exists(_path.code.."midigrid") and include "midigrid/lib/mg_128" or grid
+USO #2:
+    if the script only uses g = grid.connect then add a line above that with
+    
+    local grid = util.file_exists(_path.code.."midigrid") and include "midigrid/lib/mg_128" or grid
 
-this will check wether midigrid is installed and if so, assign it to the grid_device variable. if midigrid is not installed, it will assign the original grid resources instead.
-
-if the script uses local g or local grid then change the above snippet to use that at the beginning.
-
-if the script only uses g = grid.connect then add a line above that with
-local grid = util.file_exists(_path.code.."midigrid") and include "midigrid/lib/mg_128" or grid
-
-to avoid that scripts auto-connect to your midigrid controller and use it as a normal midi device, make sure your controller is 
-not in norns' midi devices list or that dummy devices are in slots 1 and 2 (e.g. the virtual midi device). this way your controller stays free and can be used as a midigrid.
-
-
----- UPDATES:
-
-per aggiornare (da maiden) i programmi modificati, utilizzare lo script 'mergeupdate.sh'
+IMPORTANTE:
+    to avoid that scripts auto-connect to your midigrid controller and use it as a normal midi device, make sure your 
+    controller is not in norns' midi devices list or that dummy devices are in slots 1 and 2 (e.g. the virtual midi device). 
+    this way your controller stays free and can be used as a midigrid.

@@ -20,13 +20,19 @@ id  color
 1, 17, 33, 49 
 2, 18, 34, 50
 3, 19, 35, 51 - Full Orange
-]]--
+]]
+
+-- il griddo originalo ha 16 (sedici) livelli del color!
+
 -- Tropical
-launchpad.brightness_map = {0,16,16,32,32,48,48,49,49,33,33,50,50,34,51,51}
+--launchpad.brightness_map = {0,16,16,32,32,48,48,49,49,33,33,50,50,34,51,51}
 -- Sunrise
 --launchpad.brightness_map = {0,16,16,32,32,48,48,49,49,50,50,33,33,51,2,3}
 -- Rainbow
---launchpad.brightness_map = {0, 16, 32, 48, 1, 17, 33, 49, 2, 18, 34, 50, 3, 19, 35, 51}
+--launchpad.brightness_map = {0, 16, 32, 48,   1, 17, 33, 49,   2, 18, 34, 50,   3, 19, 35, 51}
+
+-- Nebbia                      i blues            i verdi           i rossi           i bianchi
+launchpad.brightness_map = {47, 45, 41, 37,   27, 22, 123, 122,   6, 106, 60, 120,   1, 2, 3, 119}
 
 -- Reset and set mode to XY
 launchpad.init_device_msg = { 0xB0, 0x00, 0x00, 0xB0, 0x00, 0x01 }
