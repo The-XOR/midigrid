@@ -3,6 +3,7 @@ local supported_devices = {
     
     -- Basic midi grid devices
     { midi_base_name= 'apc mini',         device_type='apc_mini'      },
+    { midi_base_name= 'apc mini mk2 1',   device_type='apc_mini_mk2'  },
     { midi_base_name= 'block 1',          device_type='livid_block'   },
 
     -- Novation Launchpads Gen.1
@@ -40,6 +41,9 @@ local supported_devices = {
     
     -- Linnstrument
     { midi_base_name= 'linnstrument midi',          device_type='linnstrument'   },
+
+    -- Synthstrom Deluge
+    { midi_base_name = 'deluge 1', device_type='deluge' },
 
   }
 }

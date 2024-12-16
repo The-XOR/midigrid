@@ -18,7 +18,15 @@ local midigrid = {
   is_midigrid = true,
   vgrid = vgrid,
   device = nil,
-  core_grid = grid,
+
+  -- If the global 'grid' object contains a 'real_grid' element, then it must
+  -- have already been replaced by the midigrid mod.  Use the mod's 'real_grid'
+  -- if it exists, and the global 'grid' otherwise.
+  --
+  -- This ensures that 'core_grid' actually points to the underlying grid
+  -- subsystem.
+
+  core_grid = grid.real_grid or grid,
   core_midi_add = nil,
   core_midi_remove = nil,
   cols = 8,
@@ -54,10 +62,19 @@ function midigrid.connect(dummy_id)
   end
 
   local connected_devices = midigrid._load_midi_devices(midi_devices)
-  
+
   -- Some script check grid.device is not nil to prove a grid is attached
   if connected_devices then
-    midigrid.device = true  
+    midigrid.device = {
+        id = 999,
+        cols = midigrid.cols,
+        rows = midigrid.rows,
+        -- leaving out 'port' because a dummy value might cause undefined
+        -- behavior.  Better to have an error if some script actually needs to
+        -- use the port number than to silently do something weird.
+        name = "midigrid",
+        serial = 1234567
+    }
   end
 
   vgrid:attach_devices(connected_devices)
